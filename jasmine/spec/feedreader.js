@@ -7,12 +7,13 @@
 $(function() {
 
 	describe('RSS Feeds', function() {
-
+		// Ensure that the allFeeds variable is defined
 		it('are defined', function() {
 			expect(allFeeds).toBeDefined();
 			expect(allFeeds.length).not.toBe(0);
 		});
 
+		// Checks whether a feed has a URL
 		function url_present(input) {
 			it("each feed has a URL", function() {
 				expect(input.url).toBeDefined();
@@ -20,6 +21,7 @@ $(function() {
 			});
 		}
 
+		// Checks whether a feed has a name
 		function name_present(input) {
 			it("each feed has a name", function() {
 				expect(input.name).toBeDefined();
@@ -27,6 +29,7 @@ $(function() {
 			});
 		}
 
+		// Loops through all the feeds to check URL and name of each feed
 		for (let i = 0; i < allFeeds.length; ++i) {
 			url_present(allFeeds[i]);
 			name_present(allFeeds[i]);
