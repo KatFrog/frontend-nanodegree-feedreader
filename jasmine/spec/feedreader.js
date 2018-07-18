@@ -20,12 +20,14 @@ $(function() {
 		function url_present(input) {
 			it("each feed has a URL", function() {
 				expect(input.url).toBeDefined();
+				expect(input.url.length).not.toBe(0);
 			});
 		}
 
 		function name_present(input) {
 			it("each feed has a name", function() {
 				expect(input.name).toBeDefined();
+				expect(input.name.length).not.toBe(0);
 			});
 		}
 
@@ -41,19 +43,18 @@ $(function() {
 	describe('The menu', function() {
 
 		const mainBody = document.getElementById('main');
+		const menu = document.querySelector('.menu-icon-link');
 
-		beforeAll(function() {
-			it("menu should be hidden", function() {
-				expect(mainBody.className).toBe('menu-hidden');
-			});
+		it("menu should be hidden", function() {
+			expect(mainBody.className).toBe('menu-hidden');
 		});
 
-
-		/* TODO: Write a test that ensures the menu changes
-		 * visibility when the menu icon is clicked. This test
-		 * should have two expectations: does the menu display when
-		 * clicked and does it hide when clicked again.
-		 */
+		it("menu automatically reveals/hides when clicked", function() {
+			menu.click();
+			expect(mainBody.className).not.toBe('menu-hidden');
+			menu.click();
+			expect(mainBody.className).toBe('menu-hidden');
+		});
 
 	});
 
